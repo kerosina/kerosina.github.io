@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Evaluator</title>
+  <link href="/jsdelivr/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding-top: 50px;
+    }
+    textarea {
+      font-family: monospace;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title text-center">JavaScript Code Evaluator</h5>
+        <div class="form-group mb-3">
+          <label for="jsCodeInput" class="form-label">Enter JavaScript Code:</label>
+          <textarea class="form-control" id="jsCodeInput" rows="8" placeholder="Write your JavaScript code here..."></textarea>
+        </div>
+        <div class="text-center">
+          <button class="btn btn-primary" id="evalButton">Evaluate Code</button>
+        </div>
+        <div class="mt-3">
+          <h6>Output:</h6>
+          <pre id="output" class="p-3 bg-light border rounded"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/jsdelivr/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('evalButton').addEventListener('click', function() {
+      const code = document.getElementById('jsCodeInput').value;
+      const outputElement = document.getElementById('output');
+      try {
+        const result = eval(code);
+        outputElement.textContent = result;
+      } catch (error) {
+        outputElement.textContent = 'Error: ' + error.message;
+      }
+    });
+  </script>
+</body>
+</html>
